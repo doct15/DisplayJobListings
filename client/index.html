@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jobsearch">
+
+<head>
+    <title>Display Job Listings</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui/build/angular-ui.js"></script>
+    <script src="bower_components/angular-ui/modules/filters/highlight/highlight.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" type="text/css" href="/css/loginSplash.css">
+    <script src="app.js"></script>
+    <script src="controllers/jobSearch.controller.js"></script>
+      <script src='controllers/loginModal.controller.js'></script>
+    <script src="factories/jobSearch.factory.js"></script>
+    <script src="services/jobSearch.service.js"></script>
+    <script src="services/admin.service.js"></script>
+     <script src="services/gaq.service.js"></script>
+    <script type="text/javascript" src="http://gdc.indeed.com/ads/apiresults.js"></script>
+   
+   
+</head>
+
+<body ng-controller="jobSearch.controller">
+    <div style="margin:100px;">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <span class="navbar-brand">Display Job Listings</span>
+            <form class="nav navbar-form navbar-right">
+                <div class="input-group" style="margin-right: 10px">
+                    <input type="text" class="form-control" placeholder="Job Title" ng-model="JobTitle" />
+                    <span class="input-group-addon"></span>
+                    <input type="text" class="form-control" placeholder="Zip Code" ng-model="ZipCode"/>
+                    <span class="input-group-addon"></span>
+                    <input type="button" class="form-control btn btn-primary" value="Submit" ng-click="jobsSearch()" ng-disabled="!JobTitle || !ZipCode"/>
+                </div>
+            </form>
+        </nav>
+        <div class="jumbotron" style="padding:40px;">
+            <a ng-click='adminLogin()'>Admin Log-in</a>
+             <div class="table-responsive" ng-if="admins">
+                 <input type="text" class="form-control" placeholder="New Google Analytics Code" ng-model="aNewGaq" />
+                 <input type="button" class="form-control btn btn-primary" value="Submit" ng-click="createNewGaq(aNewGaq)" ng-disabled="!aNewGaq" />
+                <table class="table table-condensed">
+                    <tr>
+                        <th class="col-md-1">Zip Code</th>
+                        <th class="col-md-1">Search Term</th>
+                        <th class="col-md-1">Date/time</th>
+                        <th class="col-md-1">Ip Address</th>
+                    </tr>
+                    <tr ng-repeat="admin in admins">
+                        <td>{{admin.createdTimeStamp}}</td>
+                        <td>{{admin.zipCode}}</td>
+                        <td>{{admin.searchTerm}}</td>
+                        <td>{{admin.ipAddress}}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            
+            <h1>Jobs for you</h1>
+            <span id=indeed_at>
+                <a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"> 
+                    <img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search">
+                </a>
+            </span>
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <tr>
+                        <th class="col-md-1">Job Title</th>
+                        <th class="col-md-1">Company</th>
+                        <th class="col-md-1">Location</th>
+                        <th class="col-md-1">Posted Time</th>
+                    </tr>
+                    <tr ng-repeat="job in jobsOnly">
+                        <td>{{job.jobtitle[0]}}</td>
+                        <td>{{job.company[0]}}</td>
+                        <td>{{job.formattedLocationFull[0]}}</td>
+                        <td>{{job.formattedRelativeTime[0]}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
