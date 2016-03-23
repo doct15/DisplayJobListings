@@ -10,4 +10,4 @@ bmcgehee/DisplayJobListings:
     - sudo apt-get -y update
     - sudo apt-get -y install nodejs
   Exec:
-    - nodejs app.js
+    - sudo nodejs app.js
