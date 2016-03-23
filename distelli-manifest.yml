@@ -11,7 +11,7 @@ bmcgehee/DisplayJobListings:
     - sudo apt-get -y update
     - sudo apt-get -y install nodejs
   Exec:
-    - sudo nodejs app.js
+    - sudo nodejs app.js $PORT
   PostStart:
     - echo "PostStart"
     - netstat -an
