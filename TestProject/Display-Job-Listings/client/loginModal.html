@@ -1,0 +1,30 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Admin Login</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+                <div>
+                    <div id="logo-container">
+                        Admin Login
+                    </div>
+                    <div>
+                        <form>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" placeholder="Username" ng-model="username" style="width:auto">
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input type="password" class="form-control" placeholder="Password" ng-model="password" style="width:auto">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="login()">Accept</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
