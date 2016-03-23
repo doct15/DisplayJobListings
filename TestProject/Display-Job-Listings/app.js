@@ -31,6 +31,10 @@ mongoose.connect(uri, function(err) {
   console.log("Client DB: connected"); 
 });
 
+app.listen(3000, function() {
+   console.log("pls work"); 
+});
+
 //var router = express.Router();
 
     app.post('/admin', function(req, res) {
