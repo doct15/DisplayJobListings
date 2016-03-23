@@ -3,7 +3,7 @@ bmcgehee/DisplayJobListings:
   PreBuild:
   Build:
     - npm install
-    - npm test
+    #- npm test
   PkgInclude:
     - '*'
   PreInstall:
