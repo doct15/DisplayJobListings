@@ -13,4 +13,5 @@ bmcgehee/DisplayJobListings:
   Exec:
     - sudo nodejs app.js
   PostStart:
+    - echo "PostStart"
     - netstat -an
