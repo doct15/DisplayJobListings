@@ -1,0 +1,13 @@
+bmcgehee/DisplayJobListings:
+  Env:
+  PreBuild:
+  Build:
+    - npm install
+    - npm test
+  PkgInclude:
+    - '*'
+  PreInstall:
+    - sudo apt-get -y update
+    - sudo apt-get -y install nodejs
+  Exec:
+    - nodejs app.js
