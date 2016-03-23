@@ -1,5 +1,6 @@
 bmcgehee/DisplayJobListings:
   Env:
+    - PORT: "3000"
   PreBuild:
   Build:
     - npm install
